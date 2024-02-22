@@ -1,0 +1,1 @@
+export { LoggedInLayout } from "./view";
