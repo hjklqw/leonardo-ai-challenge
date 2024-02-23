@@ -12,6 +12,7 @@ import { CountryListItem } from "@/models/country";
 import { countriesQuery } from "./queries";
 import { CountryCard } from "./card";
 
+/** The main page of the application, displaying a grid view of all countries. */
 export const InfoPage = () => {
   const { data } = useSuspenseQuery<{ countries: CountryListItem[] }>(
     countriesQuery

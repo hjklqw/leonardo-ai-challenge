@@ -1,3 +1,4 @@
+/** A small subset of data for a country, used for rendering list items. */
 export interface CountryListItem {
   code: string;
   name: string;
@@ -5,6 +6,7 @@ export interface CountryListItem {
   emoji: string;
 }
 
+/** Full data for a country. */
 export interface Country {
   name: string;
   native: string;
