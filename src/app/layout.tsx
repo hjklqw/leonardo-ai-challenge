@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import "./globals.css";
-
 import { ChakraWrapper } from "@/providers/chakra";
 import { ApolloWrapper } from "@/providers/apollo";
 import { UserInfoWrapper } from "@/providers/userInfo";
