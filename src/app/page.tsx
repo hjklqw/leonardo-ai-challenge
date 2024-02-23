@@ -9,7 +9,5 @@ import { UserInfoContext } from "@/state/userInfoContext";
 export default function Home() {
   const { userInfo } = useContext(UserInfoContext);
 
-  return (
-    <main>{userInfo === undefined ? <WelcomeModal /> : <InfoPage />}</main>
-  );
+  return userInfo === undefined ? <WelcomeModal /> : <InfoPage />;
 }

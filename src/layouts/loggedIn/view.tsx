@@ -5,7 +5,7 @@ export const LoggedInLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <>
       <Header />
-      {children}
+      <main>{children}</main>
     </>
   );
 };

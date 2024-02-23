@@ -28,16 +28,14 @@ export default function CountryModal({ params: { code } }: Props) {
   );
 
   return (
-    <div>
-      <Modal isOpen={true} onClose={() => router.back()} isCentered>
-        <ModalOverlay />
-        <ModalContent minWidth={minModalWidth}>
-          <ModalCloseButton />
-          <ModalBody padding={10}>
-            <CountryInfo code={code} />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </div>
+    <Modal isOpen={true} onClose={() => router.back()} isCentered>
+      <ModalOverlay />
+      <ModalContent minWidth={minModalWidth}>
+        <ModalCloseButton />
+        <ModalBody padding={10}>
+          <CountryInfo code={code} />
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
 }
