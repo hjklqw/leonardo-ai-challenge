@@ -7,14 +7,18 @@ import {
   ModalFooter,
   ModalBody,
   Button,
-  Input,
   Text,
   Stack,
   Container,
 } from "@chakra-ui/react";
 
 import { UserInfoContext } from "@/state/userInfoContext";
-import { MAX_USERNAME_LENGTH, UserInfo } from "@/models/userInfo";
+import {
+  MAX_JOBTITLE_LENGTH,
+  MAX_USERNAME_LENGTH,
+  UserInfo,
+} from "@/models/userInfo";
+import { Input } from "@/shared/input";
 
 type Props = {
   isOpen: boolean;
@@ -39,40 +43,38 @@ export const UserInfoEditModal = ({ isOpen, onClose }: Props) => {
         <ModalBody>
           <Stack spacing={6}>
             <Container>
-              <Text mb={2}>Username</Text>
               <Input
-                defaultValue={userInfo!.username}
-                onChange={(event) =>
+                label="Username"
+                placeholder="user12345"
+                allowSpaces={false}
+                maxLength={MAX_USERNAME_LENGTH}
+                description={`${MAX_USERNAME_LENGTH} characters maximum.`}
+                onChange={(value) =>
                   setNewUserInfo((v) => ({
                     ...v,
-                    username: event.target.value?.trim(),
+                    username: value,
                   }))
                 }
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") submit();
-                }}
-                placeholder="user12345"
-                maxLength={MAX_USERNAME_LENGTH}
+                onEnter={submit}
+                defaultValue={userInfo!.username}
               />
-              <Text fontSize="xs" color="gray" mt={1} ml={1}>
-                {MAX_USERNAME_LENGTH} characters maximum.
-              </Text>
             </Container>
 
             <Container>
-              <Text mb={2}>Job Title</Text>
               <Input
-                defaultValue={userInfo!.jobTitle}
-                onChange={(event) =>
+                label="Job Title"
+                allowSpaces
+                placeholder="Software Engineer"
+                maxLength={MAX_JOBTITLE_LENGTH}
+                description={`${MAX_JOBTITLE_LENGTH} characters maximum.`}
+                onChange={(value) =>
                   setNewUserInfo((v) => ({
                     ...v,
-                    jobTitle: event.target.value?.trim(),
+                    jobTitle: value,
                   }))
                 }
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") submit();
-                }}
-                placeholder="Software Engineer"
+                onEnter={submit}
+                defaultValue={userInfo!.jobTitle}
               />
             </Container>
           </Stack>

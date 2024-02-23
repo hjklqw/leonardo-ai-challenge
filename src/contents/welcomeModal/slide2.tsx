@@ -1,20 +1,14 @@
-import { Input, Text } from "@chakra-ui/react";
+import { MAX_JOBTITLE_LENGTH } from "@/models/userInfo";
+import { Input, InputEventProps } from "@/shared/input";
 
-type Props = {
-  onChange: (value: string) => void;
-  onEnter: () => void;
-};
-
-export const WelcomeModalSlide2 = ({ onChange, onEnter }: Props) => (
-  <>
-    <Text mb={2}>Next, enter your job title.</Text>
-    <Input
-      autoFocus
-      onChange={(event) => onChange(event.target.value?.trim())}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") onEnter();
-      }}
-      placeholder="Software Engineer"
-    />
-  </>
+export const WelcomeModalSlide2 = (props: InputEventProps) => (
+  <Input
+    label="Next, enter your job title."
+    autoFocus
+    allowSpaces
+    placeholder="Software Engineer"
+    maxLength={MAX_JOBTITLE_LENGTH}
+    description={`${MAX_JOBTITLE_LENGTH} characters maximum.`}
+    {...props}
+  />
 );
