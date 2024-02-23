@@ -10,6 +10,7 @@ import {
   ModalBody,
   Button,
   SlideFade,
+  CircularProgress,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CheckIcon } from "@chakra-ui/icons";
 
@@ -20,11 +21,7 @@ import { WelcomeModalSlide2 } from "./slide2";
 
 const MAX_NUM_SLIDES = 2;
 
-type Props = {
-  onCompletion: () => void;
-};
-
-export const WelcomeModal = ({ onCompletion }: Props) => {
+export const WelcomeModal = () => {
   const { updateUserInfo } = useContext(UserInfoContext);
 
   const [username, setUsername] = useState<string>("");
@@ -37,11 +34,10 @@ export const WelcomeModal = ({ onCompletion }: Props) => {
 
   function finish() {
     updateUserInfo({ username, jobTitle });
-    onCompletion();
   }
 
   return (
-    <Modal isOpen={currSlide <= MAX_NUM_SLIDES} onClose={() => {}} isCentered>
+    <Modal isOpen={true} onClose={() => {}} isCentered>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader textAlign="center">Welcome!</ModalHeader>
@@ -64,10 +60,10 @@ export const WelcomeModal = ({ onCompletion }: Props) => {
           <Button
             colorScheme="blue"
             onClick={() => {
-              if (currSlide < MAX_NUM_SLIDES) {
-                gotoNextSlide();
-              } else {
+              if (currSlide === MAX_NUM_SLIDES) {
                 finish();
+              } else {
+                gotoNextSlide();
               }
             }}
             isDisabled={currSlide === 1 ? username === "" : jobTitle === ""}

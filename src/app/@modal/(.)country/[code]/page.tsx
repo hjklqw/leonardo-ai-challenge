@@ -5,7 +5,6 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
   useBreakpointValue,
@@ -32,10 +31,8 @@ export default function CountryModal({ params: { code } }: Props) {
     <div>
       <Modal isOpen={true} onClose={() => router.back()} isCentered>
         <ModalOverlay />
-        <ModalHeader>
-          <ModalCloseButton />
-        </ModalHeader>
         <ModalContent minWidth={minModalWidth}>
+          <ModalCloseButton />
           <ModalBody padding={10}>
             <CountryInfo code={code} />
           </ModalBody>

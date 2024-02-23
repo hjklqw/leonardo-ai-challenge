@@ -1,5 +1,6 @@
 "use client";
 
+import { useContext } from "react";
 import {
   Avatar,
   Box,
@@ -10,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 
 import { UserInfoEditModal } from "./userInfoEditModal";
-import { useContext } from "react";
 import { UserInfoContext } from "@/state/userInfoContext";
 
 export const Header = () => {
@@ -33,7 +33,7 @@ export const Header = () => {
         alignItems="center"
         justifyContent="flex-end"
       >
-        <Tooltip label="Edit">
+        <Tooltip label="Edit" hasArrow>
           <Button
             variant="link"
             color="white"

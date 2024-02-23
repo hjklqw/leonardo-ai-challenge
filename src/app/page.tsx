@@ -1,20 +1,15 @@
 "use client";
 
+import { useContext } from "react";
+
 import { WelcomeModal } from "@/contents/welcomeModal";
 import { InfoPage } from "@/contents/infoPage";
-import { useState } from "react";
+import { UserInfoContext } from "@/state/userInfoContext";
 
 export default function Home() {
-  // Temporary way to determine what page to show before userInfo persistence
-  const [isFirstRun, setFirstRun] = useState<boolean>(true);
+  const { userInfo } = useContext(UserInfoContext);
 
   return (
-    <main>
-      {isFirstRun ? (
-        <WelcomeModal onCompletion={() => setFirstRun(false)} />
-      ) : (
-        <InfoPage />
-      )}
-    </main>
+    <main>{userInfo === undefined ? <WelcomeModal /> : <InfoPage />}</main>
   );
 }
